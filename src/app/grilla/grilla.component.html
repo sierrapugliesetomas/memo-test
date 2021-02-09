@@ -1,12 +1,10 @@
 <br>
-<br>
 <div class="container">
     <div>
-        Score: {{score}}
-        Mistakes: {{ mistakes }}
+        Moves: {{moves}}
     </div>
-    <mat-grid-list class="border gray" cols="6" rowHeight="150px" gutterSize="1em">
-        <mat-grid-tile *ngFor="let card of cards" class="border">
+    <mat-grid-list class="border gray mat-elevation-z8" cols="6" gutterSize="1em">
+        <mat-grid-tile *ngFor="let card of cards" class="border image-margin">
             <img class="image" src={{card.show?card.showImage:hideImage}} (click)="onClickCard(card)">
         </mat-grid-tile>
     </mat-grid-list>

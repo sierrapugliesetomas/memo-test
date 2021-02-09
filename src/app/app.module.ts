@@ -10,7 +10,7 @@ import { MatRippleModule } from '@angular/material/core';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
-
+import {MatDividerModule} from '@angular/material/divider';
 
 
 @NgModule({
@@ -23,7 +23,8 @@ import {MatButtonModule} from '@angular/material/button';
     MatRippleModule,
     MatToolbarModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent],

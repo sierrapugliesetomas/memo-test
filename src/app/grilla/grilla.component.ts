@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class GrillaComponent implements OnInit {
   
   score = 0;
-  mistakes = 0;
+  moves = 0;
   freeze = false;
   hideImage = '../../assets/images/hide.png';
   selectedCards = [];
@@ -77,9 +77,9 @@ export class GrillaComponent implements OnInit {
         this.selectedCards[1].show = false;
         this.freeze = false;
         this.selectedCards = [];
-        this.mistakes++;
       }, 1500);
     }
+    this.moves++;
   }
   private validateShowCard(card) {
     return (this.selectedCards.length < 2 && this.selectedCards[0]?.id !== card.id && !this.guessedId.includes(card.id));
