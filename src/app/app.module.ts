@@ -7,6 +7,11 @@ import { GrillaComponent } from './grilla/grilla.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatRippleModule } from '@angular/material/core';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+
+
 
 @NgModule({
   declarations: [AppComponent, GrillaComponent],
@@ -15,7 +20,10 @@ import { MatRippleModule } from '@angular/material/core';
     BrowserAnimationsModule,
     MatGridListModule,
     MatCardModule,
-    MatRippleModule
+    MatRippleModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent],

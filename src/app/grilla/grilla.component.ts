@@ -43,7 +43,6 @@ export class GrillaComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    // ToDo: shuffle array
     this.cards.sort(() => { return 0.5 - Math.random()});
   }
 

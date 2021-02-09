@@ -25,3 +25,7 @@
     margin-left: 15%;
     margin-right: 15%;
 }
+
+.example-spacer {
+    flex: 1 1 auto;
+  }

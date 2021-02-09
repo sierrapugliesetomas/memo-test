@@ -1,7 +1,9 @@
 <br>
 <br>
 <div class="container">
-    <div> Score: {{score}}
+    <div>
+        Score: {{score}}
+        Mistakes: {{ mistakes }}
     </div>
     <mat-grid-list class="border gray" cols="6" rowHeight="150px" gutterSize="1em">
         <mat-grid-tile *ngFor="let card of cards" class="border">
