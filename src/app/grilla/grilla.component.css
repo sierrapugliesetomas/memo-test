@@ -1,27 +1,92 @@
 .mat-grid-list {
-    /* padding-left: 1rem;
+  /* padding-left: 1rem;
     padding-right: 1rem; */
 }
 
-.border{
-    border-radius: 2em;
+.border {
+  border-radius: 1.5em;
 }
 
 .gray {
-    background-color: rgb(96, 96, 96);
+  background-color: rgb(96, 96, 96);
 }
 
 .image {
-    width:100%;
-    height: 100%;
-    cursor: pointer;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
 }
 
 .image:hover {
-    background-color: rgba(56, 56, 56, 0.308);
+  background-color: rgba(56, 56, 56, 0.308);
 }
 
 .container {
-    margin-left: 10%;
-    margin-right: 40%;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+.fade-in {
+  animation: fadeIn ease 1.5s;
+  -webkit-animation: fadeIn ease 1.5s;
+  -moz-animation: fadeIn ease 1.5s;
+  -o-animation: fadeIn ease 1.5s;
+  -ms-animation: fadeIn ease 1.5s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-ms-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.mat-card {
+  margin-bottom: 1em;
+}
+
+.box {
+  display: flex;
+}
+
+.green {
+  background-color: rgb(58, 177, 58);
 }

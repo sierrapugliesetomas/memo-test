@@ -1,11 +1,17 @@
 <br>
 <div class="container">
-    <div>
-        Moves: {{moves}}
+    <div class="box">
+        <mat-card class="border"> Moves: {{moves}} Time: {{time}}</mat-card>
+        <button mat-raised-button class="green" (click)="changeDifficulty(1)">Easy</button>
+        <button mat-raised-button color="accent" (click)="changeDifficulty(2)">Medium</button>
+        <button mat-raised-button color="warn" (click)="changeDifficulty(3)">Hard</button>
+        <button mat-raised-button color="warn" (click)="ngOnInit()">Restart</button>
     </div>
     <mat-grid-list class="border gray mat-elevation-z8" cols="6" gutterSize="1em">
         <mat-grid-tile *ngFor="let card of cards" class="border image-margin">
-            <img class="image" src={{card.show?card.showImage:hideImage}} (click)="onClickCard(card)">
+            <div matRipple [matRippleColor]="black">
+                <img class="image fade-in" src={{card.show?card.showImage:hideImage}} (click)="onClickCard(card)">
+            </div>
         </mat-grid-tile>
     </mat-grid-list>
 </div>
