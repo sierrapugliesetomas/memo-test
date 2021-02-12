@@ -1,11 +1,12 @@
 <br>
 <div class="container">
     <div class="box margin-bottom">
-        <mat-card class="border"> Moves: {{moves}} Time: {{time}}</mat-card>
+        <mat-card class="border"> Moves: {{moves}} Time: {{ timer }}  
+        </mat-card>
         <button mat-raised-button class="green" (click)="changeDifficulty(1)">Easy</button>
         <button mat-raised-button color="accent" (click)="changeDifficulty(2)">Medium</button>
         <button mat-raised-button color="warn" (click)="changeDifficulty(3)">Hard</button>
-        <button mat-raised-button color="warn" (click)="ngOnInit()">Restart</button>
+        <button mat-raised-button (click)="ngOnInit()">Restart</button>
     </div>
     <mat-grid-list class="border gray mat-elevation-z8" cols="{{columns}}" gutterSize="1em">
         <mat-grid-tile *ngFor="let card of cards" class="border image-margin">

@@ -1,6 +1,6 @@
-import { Time } from '@angular/common';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription, timer } from 'rxjs';
+import { takeWhile } from 'rxjs/operators';
 import { countriesList } from '../utils/utils';
 
 @Component({
@@ -8,16 +8,17 @@ import { countriesList } from '../utils/utils';
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.css'],
 })
-export class GameComponent implements OnInit {
+export class GameComponent implements OnInit, OnDestroy {
   columns: number;
   difficulty = 2;
-  time: Time;
   moves: number;
   freeze: boolean;
   hideImage = '../../assets/images/hide.png';
   selectedCards: Array<any>;
   guessedId: Array<any>;
   cards: Array<any>;
+  timer: number;
+  timerSubscription: Subscription;
 
   constructor() {}
 
@@ -26,11 +27,17 @@ export class GameComponent implements OnInit {
     this.selectedCards = [];
     this.guessedId = [];
     this.freeze = false;
+    this.timer = 0;
     this.setCards();
     this.cards.sort(() => {
       return 0.5 - Math.random();
     });
     this.startTime();
+  }
+
+  ngOnDestroy(): void {
+    // ToDo: might delete this, takeWhile unsubscribes automatically
+    this.timerSubscription.unsubscribe();
   }
 
   onClickCard(card: any): void {
@@ -56,7 +63,6 @@ export class GameComponent implements OnInit {
       this.guessedId.push(this.selectedCards[1].id);
       this.selectedCards = [];
       this.freeze = false;
-      // dont transform on hover
     } else {
       setTimeout(() => {
         this.selectedCards[0].show = false;
@@ -66,6 +72,9 @@ export class GameComponent implements OnInit {
       }, 1500);
     }
     this.moves++;
+    if (this.hasFinished()) {
+      console.log('You won!');
+    }
   }
   private validateShowCard(card): boolean {
     return (
@@ -97,6 +106,12 @@ export class GameComponent implements OnInit {
   }
 
   private startTime(): void {
-    // ToDo: timer
+    this.timerSubscription = timer(1000, 1000)
+      .pipe(takeWhile(() => !this.hasFinished()))
+      .subscribe(() => this.timer++);
+  }
+
+  private hasFinished(): boolean {
+    return this.guessedId.length === this.cards.length;
   }
 }
