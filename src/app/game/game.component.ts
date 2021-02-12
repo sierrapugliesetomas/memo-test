@@ -9,6 +9,7 @@ import { countriesList } from '../utils/utils';
   styleUrls: ['./game.component.css'],
 })
 export class GameComponent implements OnInit {
+  columns: number;
   difficulty = 2;
   time: Time;
   moves: number;
@@ -78,12 +79,15 @@ export class GameComponent implements OnInit {
     if (this.difficulty === 1) {
       // Easy
       this.cards = JSON.parse(JSON.stringify(countriesList.slice(0, 12)));
+      this.columns = 4;
     } else if (this.difficulty === 2) {
       // Medium
-      this.cards = JSON.parse(JSON.stringify(countriesList.slice(0, 16)));
+      this.cards = JSON.parse(JSON.stringify(countriesList.slice(0, 20)));
+      this.columns = 5;
     } else {
       // Hard
-      this.cards = JSON.parse(JSON.stringify(countriesList.slice(0, 24)));
+      this.cards = JSON.parse(JSON.stringify(countriesList.slice(0, 30)));
+      this.columns = 6;
     }
   }
 
