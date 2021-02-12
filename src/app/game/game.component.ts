@@ -4,11 +4,11 @@ import { Component, OnInit } from '@angular/core';
 import { countriesList } from '../utils/utils';
 
 @Component({
-  selector: 'app-grilla',
-  templateUrl: './grilla.component.html',
-  styleUrls: ['./grilla.component.css'],
+  selector: 'app-game',
+  templateUrl: './game.component.html',
+  styleUrls: ['./game.component.css'],
 })
-export class GrillaComponent implements OnInit {
+export class GameComponent implements OnInit {
   difficulty = 2;
   time: Time;
   moves: number;
