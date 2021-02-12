@@ -1,6 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription, timer } from 'rxjs';
-import { takeWhile } from 'rxjs/operators';
 import { countriesList } from '../utils/utils';
 
 @Component({
@@ -18,7 +16,7 @@ export class GameComponent implements OnInit, OnDestroy {
   guessedId: Array<any>;
   cards: Array<any>;
   timer: number;
-  timerSubscription: Subscription;
+  timerTimeout: any;
 
   constructor() {}
 
@@ -36,8 +34,7 @@ export class GameComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    // ToDo: might delete this, takeWhile unsubscribes automatically
-    this.timerSubscription.unsubscribe();
+    // ToDo: delete if not used
   }
 
   onClickCard(card: any): void {
@@ -73,7 +70,8 @@ export class GameComponent implements OnInit, OnDestroy {
     }
     this.moves++;
     if (this.hasFinished()) {
-      console.log('You won!');
+      clearTimeout(this.timerTimeout);
+      // ToDo: open material dialog
     }
   }
   private validateShowCard(card): boolean {
@@ -106,9 +104,10 @@ export class GameComponent implements OnInit, OnDestroy {
   }
 
   private startTime(): void {
-    this.timerSubscription = timer(1000, 1000)
-      .pipe(takeWhile(() => !this.hasFinished()))
-      .subscribe(() => this.timer++);
+    clearTimeout(this.timerTimeout);
+    this.timerTimeout = setInterval(() => {
+      this.timer++;
+    }, 1000);
   }
 
   private hasFinished(): boolean {
