@@ -1,3 +1,8 @@
+export interface DialogData {
+  timer: string;
+  moves: string;
+}
+
 export const countriesList = [
   {
     text: 'One',

@@ -1,4 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from '../utils/dialog/dialog.component';
 import { countriesList } from '../utils/utils';
 
 @Component({
@@ -8,7 +10,7 @@ import { countriesList } from '../utils/utils';
 })
 export class GameComponent implements OnInit, OnDestroy {
   columns: number;
-  difficulty = 2;
+  difficulty = 1;
   moves: number;
   freeze: boolean;
   hideImage = '../../assets/images/hide.png';
@@ -17,24 +19,39 @@ export class GameComponent implements OnInit, OnDestroy {
   cards: Array<any>;
   timer: number;
   timerTimeout: any;
+  playerName: string;
 
-  constructor() {}
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.moves = 0;
+    this.playerName = '';
     this.selectedCards = [];
     this.guessedId = [];
     this.freeze = false;
     this.timer = 0;
     this.setCards();
-    this.cards.sort(() => {
-      return 0.5 - Math.random();
-    });
+    this.sortCards();
     this.startTime();
+    setTimeout(() => {
+      this.dialog.open(DialogComponent),
+        {
+          data: {
+            time: this.timer,
+            moves: this.moves,
+          },
+        };
+    }, 2000);
   }
 
   ngOnDestroy(): void {
     // ToDo: delete if not used
+  }
+
+  private sortCards(): void {
+    this.cards.sort(() => {
+      return 0.5 - Math.random();
+    });
   }
 
   onClickCard(card: any): void {
@@ -72,6 +89,24 @@ export class GameComponent implements OnInit, OnDestroy {
     if (this.hasFinished()) {
       clearTimeout(this.timerTimeout);
       // ToDo: open material dialog
+
+      // setTimeout(() => {
+      const dialogRef = this.dialog.open(DialogComponent);
+      dialogRef.afterOpened().subscribe(() => {
+        dialogRef.disableClose = true;
+        dialogRef.componentInstance.data = {
+          moves: String(this.moves),
+          timer: String(this.timer),
+        };
+      });
+
+      dialogRef.backdropClick().subscribe((data) => {
+        console.log(data);
+      });
+      dialogRef.afterClosed().subscribe((playerName) => {
+        playerName ? (this.playerName = playerName) : this.ngOnInit();
+      });
+      // }, 1000);
     }
   }
   private validateShowCard(card): boolean {
