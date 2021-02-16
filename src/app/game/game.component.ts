@@ -31,27 +31,21 @@ export class GameComponent implements OnInit, OnDestroy {
     this.freeze = false;
     this.timer = 0;
     this.setCards();
-    this.sortCards();
+    this.shuffleCards();
     this.startTime();
-    setTimeout(() => {
-      this.dialog.open(DialogComponent),
-        {
-          data: {
-            time: this.timer,
-            moves: this.moves,
-          },
-        };
-    }, 2000);
   }
 
   ngOnDestroy(): void {
     // ToDo: delete if not used
   }
 
-  private sortCards(): void {
-    this.cards.sort(() => {
-      return 0.5 - Math.random();
-    });
+  private shuffleCards(): void {
+    for (let i = this.cards.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * i);
+      const temp = this.cards[i];
+      this.cards[i] = this.cards[j];
+      this.cards[j] = temp;
+    }
   }
 
   onClickCard(card: any): void {
