@@ -87,10 +87,12 @@ export class GameComponent implements OnInit, OnDestroy {
     }
     this.moves++;
     if (this.hasFinished()) {
-      clearTimeout(this.timerTimeout);
-      // ToDo: open material dialog
-
-      // setTimeout(() => {
+      this.openDialog();
+    }
+  }
+  private openDialog(): void {
+    clearTimeout(this.timerTimeout);
+    setTimeout(() => {
       const dialogRef = this.dialog.open(DialogComponent);
       dialogRef.afterOpened().subscribe(() => {
         dialogRef.disableClose = true;
@@ -103,12 +105,13 @@ export class GameComponent implements OnInit, OnDestroy {
       dialogRef.backdropClick().subscribe((data) => {
         console.log(data);
       });
+
       dialogRef.afterClosed().subscribe((playerName) => {
         playerName ? (this.playerName = playerName) : this.ngOnInit();
       });
-      // }, 1000);
-    }
+    }, 2000);
   }
+
   private validateShowCard(card): boolean {
     return (
       this.selectedCards.length < 2 &&
