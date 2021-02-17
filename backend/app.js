@@ -1,4 +1,3 @@
-// const path = require("path");
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -18,8 +17,6 @@ mongoose
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-// app.use("/images", express.static(path.join("backend/images")));
-// ToDo: check if not needed apparently only for image like content
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");

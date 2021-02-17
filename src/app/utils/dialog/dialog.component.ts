@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DialogData } from '../utils';
+import { DialogData } from './dialog-data.model';
 
 @Component({
   selector: 'app-dialog',

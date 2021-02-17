@@ -26,7 +26,6 @@ export class GameComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.moves = 0;
-    this.playerName = '';
     this.selectedCards = [];
     this.guessedId = [];
     this.freeze = false;
@@ -103,16 +102,14 @@ export class GameComponent implements OnInit, OnDestroy {
 
       dialogRef.afterClosed().subscribe((playerName) => {
         if (playerName) {
-          // ? (this.playerName = playerName) : this.ngOnInit();
-          this.playerName = playerName; // ToDo: delete if not necessary
           const newScore = {
-            playerName: this.playerName,
+            playerName: playerName,
             time: this.timer,
             moves: this.moves,
           };
-          //ToDo: utilize Score interface
+
           this.service.addScore(
-            this.playerName,
+            playerName,
             String(this.timer),
             String(this.moves)
           );

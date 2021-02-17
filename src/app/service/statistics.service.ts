@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Score } from '../utils/score/score.mode';
 
 @Injectable({
@@ -9,17 +8,8 @@ import { Score } from '../utils/score/score.mode';
 export class StatisticsService {
   constructor(private http: HttpClient) {}
 
-  // postScore(): Observable<any> {
-  //   return this.httpClient.post('localhost:3000/post', {
-  //     playerName: 'name',
-  //     time: '30',
-  //     moves: '10',
-  //   });
-  // }
-
-  // ToDo: Score interface
   addScore(playerName: string, time: string, moves: string) {
-    const scoreData = {
+    const scoreData: Score = {
       playerName: playerName,
       time: time,
       moves: moves,

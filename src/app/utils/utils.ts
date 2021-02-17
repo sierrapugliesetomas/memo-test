@@ -1,8 +1,3 @@
-export interface DialogData {
-  timer: string;
-  moves: string;
-} // ToDo: move to dialogData.model in /dialog
-
 export const countriesList = [
   {
     text: 'One',

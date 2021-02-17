@@ -1,5 +1,5 @@
 export interface Score {
-  id: string;
+  id?: string;
   playerName: string;
   time: string;
   moves: string;
