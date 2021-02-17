@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { StatisticsService } from '../service/statistics.service';
 import { DialogComponent } from '../utils/dialog/dialog.component';
 import { countriesList } from '../utils/utils';
 
@@ -21,7 +22,7 @@ export class GameComponent implements OnInit, OnDestroy {
   timerTimeout: any;
   playerName: string;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private service: StatisticsService) {}
 
   ngOnInit(): void {
     this.moves = 0;
@@ -101,7 +102,24 @@ export class GameComponent implements OnInit, OnDestroy {
       });
 
       dialogRef.afterClosed().subscribe((playerName) => {
-        playerName ? (this.playerName = playerName) : this.ngOnInit();
+        if (playerName) {
+          // ? (this.playerName = playerName) : this.ngOnInit();
+          this.playerName = playerName; // ToDo: delete if not necessary
+          const newScore = {
+            playerName: this.playerName,
+            time: this.timer,
+            moves: this.moves,
+          };
+          //ToDo: utilize Score interface
+          this.service.addScore(
+            this.playerName,
+            String(this.timer),
+            String(this.moves)
+          );
+        } else {
+          this.ngOnInit();
+        }
+        // ToDo: Complete
       });
     }, 2000);
   }
