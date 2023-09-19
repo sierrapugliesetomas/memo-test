@@ -1,0 +1,25 @@
+<h2 mat-dialog-title class="title">CONGRATULATIONS!</h2>
+<mat-dialog-content class="mat-typography fade-in fade-out dialog-container">
+  <br>
+  <div class="subtitle">Don't forget to share your score and challenge other players 😎</div>
+  <div class="score">
+    <span>Time:  {{data?.timer}}s</span>
+    <span>Moves: {{data?.moves}}</span>
+  </div>
+  <form class="form">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input type="text" matInput [formControl]="nameFormControl" placeholder="Your name" class="form-name">
+      <mat-error *ngIf="nameFormControl.hasError('pattern') && !nameFormControl.hasError('required')">
+        Please enter a valid name
+      </mat-error>
+      <mat-error *ngIf="nameFormControl.hasError('required')">
+        name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end" class="footer">
+  <button mat-button color="primary" [disabled]="!nameFormControl.valid" [mat-dialog-close]="nameFormControl.value">Send</button>
+  <button mat-button color="primary" [mat-dialog-close]="false">Play again</button>
+</mat-dialog-actions>
