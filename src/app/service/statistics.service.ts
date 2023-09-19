@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Score } from '../utils/score/score.mode';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators'
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -12,7 +13,7 @@ export class StatisticsService {
 
   constructor(private http: HttpClient) {}
 
-  API_URL = 'http://localhost:3000/api/scores';
+  API_URL = environment.apiURL;
 
   addScore(playerName: string, time: number, moves: string) {
     const scoreData: Score = {
