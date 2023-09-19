@@ -5,6 +5,7 @@ export const countriesList = [
     equalId: 1,
     id: 1,
     show: false,
+    asserted: false
   },
   {
     text: 'Two',
@@ -12,6 +13,7 @@ export const countriesList = [
     equalId: 1,
     id: 2,
     show: false,
+    asserted: false
   },
   {
     text: 'Three',
@@ -19,6 +21,7 @@ export const countriesList = [
     equalId: 2,
     id: 3,
     show: false,
+    asserted: false
   },
   {
     text: 'Four',
@@ -26,6 +29,7 @@ export const countriesList = [
     equalId: 2,
     id: 4,
     show: false,
+    asserted: false
   },
   {
     text: 'Five',
@@ -33,6 +37,7 @@ export const countriesList = [
     equalId: 3,
     id: 5,
     show: false,
+    asserted: false
   },
   {
     text: 'Six',
@@ -40,6 +45,7 @@ export const countriesList = [
     equalId: 3,
     id: 6,
     show: false,
+    asserted: false
   },
   {
     text: 'Seven',
@@ -47,6 +53,7 @@ export const countriesList = [
     equalId: 4,
     id: 7,
     show: false,
+    asserted: false
   },
   {
     text: 'Eight',
@@ -54,6 +61,7 @@ export const countriesList = [
     equalId: 4,
     id: 8,
     show: false,
+    asserted: false
   },
   {
     text: 'Nine',
@@ -61,6 +69,7 @@ export const countriesList = [
     equalId: 5,
     id: 9,
     show: false,
+    asserted: false
   },
   {
     text: 'Ten',
@@ -68,6 +77,7 @@ export const countriesList = [
     equalId: 5,
     id: 10,
     show: false,
+    asserted: false
   },
   {
     text: 'Eleven',
@@ -75,6 +85,7 @@ export const countriesList = [
     equalId: 6,
     id: 11,
     show: false,
+    asserted: false
   },
   {
     text: 'Twelve',
@@ -82,6 +93,7 @@ export const countriesList = [
     equalId: 6,
     id: 12,
     show: false,
+    asserted: false
   },
   {
     text: 'Thirteen',
@@ -89,6 +101,7 @@ export const countriesList = [
     equalId: 7,
     id: 13,
     show: false,
+    asserted: false
   },
   {
     text: 'Fourteen',
@@ -96,6 +109,7 @@ export const countriesList = [
     equalId: 7,
     id: 14,
     show: false,
+    asserted: false
   },
   {
     text: 'Fifteen',
@@ -103,6 +117,7 @@ export const countriesList = [
     equalId: 8,
     id: 15,
     show: false,
+    asserted: false
   },
   {
     text: 'Sixteen',
@@ -110,6 +125,7 @@ export const countriesList = [
     equalId: 8,
     id: 16,
     show: false,
+    asserted: false
   },
   {
     text: 'Seventeen',
@@ -117,6 +133,7 @@ export const countriesList = [
     equalId: 9,
     id: 17,
     show: false,
+    asserted: false
   },
   {
     text: 'Eighteen',
@@ -124,6 +141,7 @@ export const countriesList = [
     equalId: 9,
     id: 18,
     show: false,
+    asserted: false
   },
   {
     text: 'Nineteen',
@@ -131,6 +149,7 @@ export const countriesList = [
     equalId: 10,
     id: 19,
     show: false,
+    asserted: false
   },
   {
     text: 'Twenty',
@@ -138,6 +157,7 @@ export const countriesList = [
     equalId: 10,
     id: 20,
     show: false,
+    asserted: false
   },
   {
     text: 'Twenty-one',
@@ -145,6 +165,7 @@ export const countriesList = [
     equalId: 11,
     id: 21,
     show: false,
+    asserted: false
   },
   {
     text: 'Twenty-two',
@@ -152,6 +173,7 @@ export const countriesList = [
     equalId: 11,
     id: 22,
     show: false,
+    asserted: false
   },
   {
     text: 'Twenty-three',
@@ -159,6 +181,7 @@ export const countriesList = [
     equalId: 12,
     id: 23,
     show: false,
+    asserted: false
   },
   {
     text: 'Twenty-four',
@@ -166,6 +189,7 @@ export const countriesList = [
     equalId: 12,
     id: 24,
     show: false,
+    asserted: false
   },
   {
     text: 'Twenty-five',
@@ -173,6 +197,7 @@ export const countriesList = [
     equalId: 13,
     id: 25,
     show: false,
+    asserted: false
   },
   {
     text: 'Twenty-six',
@@ -180,6 +205,7 @@ export const countriesList = [
     equalId: 13,
     id: 26,
     show: false,
+    asserted: false
   },
   {
     text: 'Twenty-seven',
@@ -187,6 +213,7 @@ export const countriesList = [
     equalId: 14,
     id: 27,
     show: false,
+    asserted: false
   },
   {
     text: 'Twenty-eight',
@@ -194,6 +221,7 @@ export const countriesList = [
     equalId: 14,
     id: 28,
     show: false,
+    asserted: false
   },
   {
     text: 'Twenty-nine',
@@ -201,6 +229,7 @@ export const countriesList = [
     equalId: 15,
     id: 29,
     show: false,
+    asserted: false
   },
   {
     text: 'Thirty',
@@ -208,5 +237,6 @@ export const countriesList = [
     equalId: 15,
     id: 30,
     show: false,
+    asserted: false
   },
 ];

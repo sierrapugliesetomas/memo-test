@@ -17,9 +17,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { DialogComponent } from './utils/dialog/dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ConfettiService } from './utils/confetti/confetti.service';
+import { AppRoutingModule } from './app-routing.module';
+import { ScoresComponent } from './scores/scores.component';
+import { MatTableModule } from '@angular/material/table'
+
 
 @NgModule({
-  declarations: [AppComponent, GameComponent, DialogComponent],
+  declarations: [AppComponent, GameComponent, DialogComponent, ScoresComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -32,12 +37,14 @@ import { HttpClientModule } from '@angular/common/http';
     MatDividerModule,
     MatDialogModule,
     MatInputModule,
+    MatTableModule,
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     HttpClientModule,
+    AppRoutingModule,
   ],
-  providers: [],
+  providers: [ConfettiService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

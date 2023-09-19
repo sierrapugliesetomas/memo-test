@@ -1,13 +1,23 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { StatisticsService } from '../service/statistics.service';
 import { DialogComponent } from '../utils/dialog/dialog.component';
 import { countriesList } from '../utils/utils';
+import { state, style, transition, trigger } from '@angular/animations';
+import { ShakeAnimation } from '../utils/animations/animations';
+import { ConfettiService } from '../utils/confetti/confetti.service';
 
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.css'],
+  animations: [
+    trigger('shake', [
+      state('0', style({})),
+      state('1', style({})),
+      transition('0 => 1', ShakeAnimation),
+    ]),
+  ]
 })
 export class GameComponent implements OnInit, OnDestroy {
   columns: number;
@@ -22,7 +32,11 @@ export class GameComponent implements OnInit, OnDestroy {
   timerTimeout: any;
   playerName: string;
 
-  constructor(public dialog: MatDialog, private service: StatisticsService) {}
+  constructor(
+    public dialog: MatDialog,
+    private service: StatisticsService,
+    private confettiService: ConfettiService
+  ) {}
 
   ngOnInit(): void {
     this.moves = 0;
@@ -65,10 +79,15 @@ export class GameComponent implements OnInit, OnDestroy {
   }
 
   private compareCards(): void {
+    // To test end game quickly
+    // this.guessedId.length = this.cards.length;
+
     this.freeze = true;
     if (this.areEquals()) {
       this.guessedId.push(this.selectedCards[0].id);
       this.guessedId.push(this.selectedCards[1].id);
+      this.selectedCards[0].asserted = true;
+      this.selectedCards[1].asserted = true;
       this.selectedCards = [];
       this.freeze = false;
     } else {
@@ -79,11 +98,16 @@ export class GameComponent implements OnInit, OnDestroy {
         this.selectedCards = [];
       }, 1500);
     }
+
     this.moves++;
+
     if (this.hasFinished()) {
+      this.stopTimer();
       this.openDialog();
+      this.confettiService.canon();
     }
   }
+
   private openDialog(): void {
     clearTimeout(this.timerTimeout);
     setTimeout(() => {
@@ -96,28 +120,17 @@ export class GameComponent implements OnInit, OnDestroy {
         };
       });
 
-      dialogRef.backdropClick().subscribe((data) => {
-        console.log(data);
-      });
 
       dialogRef.afterClosed().subscribe((playerName) => {
         if (playerName) {
-          const newScore = {
-            playerName: playerName,
-            time: this.timer,
-            moves: this.moves,
-          };
-
           this.service.addScore(
             playerName,
-            String(this.timer),
+            this.timer,
             String(this.moves)
           );
-        } else {
-          this.ngOnInit();
         }
-        // ToDo: Complete
-      });
+      this.ngOnInit();
+    });
     }, 2000);
   }
 
@@ -157,7 +170,11 @@ export class GameComponent implements OnInit, OnDestroy {
     }, 1000);
   }
 
-  private hasFinished(): boolean {
+  private stopTimer(): void {
+    clearTimeout(this.timerTimeout);
+  }
+
+  hasFinished(): boolean {
     return this.guessedId.length === this.cards.length;
   }
 }

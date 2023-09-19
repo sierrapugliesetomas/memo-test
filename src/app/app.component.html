@@ -288,30 +288,35 @@
     }
   }
 </style>
-<mat-toolbar color="primary">
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+<mat-toolbar color="primary" class="toolbar-container">
+  <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"> -->
     <!--ToDo: quitar si no se va a desplegar -->
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span>Memo Test</span>
+    <!-- <mat-icon>menu</mat-icon> -->
+  <!-- </button> -->
+  <div class="link-container-3">
+    <div class="title">MEMO TEST APP</div>
+    <a mat-menu-item routerLink="/" routerLinkActive="active-link" class="link">Play</a>
+    <a mat-menu-item routerLink="/high-score" routerLinkActive="active-link" class="link">High Score</a>
+  </div>
   <span class="example-spacer"></span>
-  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-    <!-- ToDo: quitar si no tiene funcionalidad-->
-    <mat-icon>favorite</mat-icon>
-  </button>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-    <!-- ToDo: poner link a mi github y linkedin -->
-    <mat-icon>share</mat-icon>
-  </button>
-</mat-toolbar>
+  <!-- <div div class="link-container-2">
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>share</mat-icon>
+    </button>
+  </div> -->
+
+  </mat-toolbar>
 <div class="container">
-  <app-game></app-game>
+  <router-outlet></router-outlet>
   <br>
   <mat-divider>
   </mat-divider>
   <br>
   <p>
-    <b>©2021 - by Tomas Sierra Pugliese</b>
+    <b>©2023 - by Tomas Sierra Pugliese</b>
   </p>
   <br>
 </div>
