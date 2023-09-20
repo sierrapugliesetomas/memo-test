@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve && nodemon server.js",
-    "start:prod": "ng serve && nodemon server.js",
+    "start": "ng build --prod ng serve",
+    "start:dev": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -25,9 +25,6 @@
     "body-parser": "^1.18.3",
     "canvas-confetti": "^1.6.0",
     "core-js": "^3.1.2",
-    "cors": "^2.8.5",
-    "express": "^4.16.3",
-    "mongoose": "^5.1.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
@@ -49,7 +46,6 @@
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~4.1.2",
-    "nodemon": "^1.17.4"
+    "typescript": "~4.1.2"
   }
 }

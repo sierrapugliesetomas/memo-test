@@ -2,16 +2,22 @@ p {
   text-align: center;
 }
 
+a {
+  color: rgb(189, 189, 189);
+}
+
 .link {
-  color: white;
+  color: rgb(255, 255, 255) !important;
+  font-size: large;
+  font-weight: 400;
 }
 
 .link:hover {
-  color: rgb(182, 182, 182);
+  color: rgb(160, 160, 160) !important;
 }
 
 .active-link {
-  color: white;
+  color: white !important ;
 }
 
 .link-container {
@@ -33,8 +39,7 @@ p {
 
 .link-container-3 {
   display: flex;
-  width: 450px;
-
+  width: 380px;
   justify-content: space-between;
 }
 
