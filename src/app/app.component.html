@@ -291,8 +291,8 @@
 <mat-toolbar color="primary" class="toolbar-container">
   <div class="link-container-3">
     <div class="title">MEMO TEST APP</div>
-    <a routerLink="/" routerLinkActive="active-link" class="link">Play</a>
-    <a routerLink="/high-score" routerLinkActive="active-link" class="link">High Score</a>
+    <a routerLink="/" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active-link" class="link">Play</a>
+    <a routerLink="/high-score" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active-link" class="link">High Score</a>
   </div>
   <span class="example-spacer"></span>
   </mat-toolbar>

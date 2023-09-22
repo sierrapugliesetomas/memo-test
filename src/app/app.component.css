@@ -13,11 +13,11 @@ a {
 }
 
 .link:hover {
-  color: rgb(160, 160, 160) !important;
+  color: rgb(160, 160, 160);
 }
 
 .active-link {
-  color: white !important ;
+  text-shadow: 2px 2px 4px #000000;
 }
 
 .link-container {
