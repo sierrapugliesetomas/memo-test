@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiURL: ''
+  apiURL: 'https://memo-test-backend.vercel.app/api/scores'
 };
