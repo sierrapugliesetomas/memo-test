@@ -21,6 +21,8 @@ import { ConfettiService } from './utils/confetti/confetti.service';
 import { AppRoutingModule } from './app-routing.module';
 import { ScoresComponent } from './scores/scores.component';
 import { MatTableModule } from '@angular/material/table'
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 @NgModule({
@@ -38,6 +40,8 @@ import { MatTableModule } from '@angular/material/table'
     MatDialogModule,
     MatInputModule,
     MatTableModule,
+    MatProgressSpinnerModule,
+    MatMenuModule,
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,

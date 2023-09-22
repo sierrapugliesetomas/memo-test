@@ -4,10 +4,10 @@
         <mat-card class="border">
             <div class="timer">Moves: {{moves}}</div>
             <div class="timer">Time: {{ timer }} </div>
-            <!-- <button mat-raised-button class="green" (click)="changeDifficulty(1)">Easy</button>
-            <button mat-raised-button color="accent" (click)="changeDifficulty(2)">Medium</button>
-            <button mat-raised-button color="warn" (click)="changeDifficulty(3)">Hard</button> -->
-            <button mat-raised-button color="warn" (click)="ngOnInit()">Restart</button>
+            <button mat-raised-button class="green" (click)="changeDifficulty('easy')">Easy</button>
+            <button mat-raised-button color="accent" (click)="changeDifficulty('medium')">Medium</button>
+            <button mat-raised-button color="warn" (click)="changeDifficulty('hard')">Hard</button>
+            <button mat-raised-button (click)="ngOnInit()">Restart</button>
         </mat-card>
     </div>
     <mat-grid-list class="border gray mat-elevation-z8" cols="{{columns}}" gutterSize="1em">

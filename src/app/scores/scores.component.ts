@@ -1,17 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { Score } from '../utils/score/score.mode';
 import { StatisticsService } from '../service/statistics.service';
-import { take } from 'rxjs/operators'
+import { finalize, take } from 'rxjs/operators'
 
 @Component({
   selector: 'app-scores',
   templateUrl: './scores.component.html',
-  styleUrls: ['./scores.component.css']
+  styleUrls: ['./scores.component.css'],
 })
 
 export class ScoresComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'player', 'time'];
+  displayedColumns: string[] = ['position', 'player', 'time', 'difficulty'];
   dataSource: Score[];
+  loading: boolean;
+  difficulty: string = 'easy';
+  difficultyOptions: string[] = ['easy', 'medium', 'hard'];
 
   constructor(private statisticsService: StatisticsService ) { }
 
@@ -20,8 +23,17 @@ export class ScoresComponent implements OnInit {
   }
 
   getScores(): void {
-    this.statisticsService.getScores().pipe(take(1)).subscribe(data => {
+    this.loading = true;
+    this.statisticsService.getScores(this.difficulty).pipe(
+      take(1),
+      finalize(() => this.loading = false))
+    .subscribe(data => {
       this.dataSource = data;
-    })
+    });
+  }
+
+  changeDifficulty(difficulty) {
+    this.difficulty = difficulty;
+    this.getScores();
   }
 }

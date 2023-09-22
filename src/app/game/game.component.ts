@@ -21,7 +21,7 @@ import { ConfettiService } from '../utils/confetti/confetti.service';
 })
 export class GameComponent implements OnInit, OnDestroy {
   columns: number;
-  difficulty = 1;
+  difficulty: string = 'easy';
   moves: number;
   freeze: boolean;
   hideImage = '../../assets/images/hide.png';
@@ -126,7 +126,8 @@ export class GameComponent implements OnInit, OnDestroy {
           this.service.addScore(
             playerName,
             this.timer,
-            String(this.moves)
+            this.moves,
+            this.difficulty
           );
         }
       this.ngOnInit();
@@ -143,11 +144,11 @@ export class GameComponent implements OnInit, OnDestroy {
   }
 
   setCards(): void {
-    if (this.difficulty === 1) {
+    if (this.difficulty === 'easy') {
       // Easy
       this.cards = JSON.parse(JSON.stringify(countriesList.slice(0, 12)));
       this.columns = 4;
-    } else if (this.difficulty === 2) {
+    } else if (this.difficulty === 'medium') {
       // Medium
       this.cards = JSON.parse(JSON.stringify(countriesList.slice(0, 20)));
       this.columns = 5;
@@ -158,8 +159,8 @@ export class GameComponent implements OnInit, OnDestroy {
     }
   }
 
-  changeDifficulty(number: number): void {
-    this.difficulty = number;
+  changeDifficulty(difficulty: string): void {
+    this.difficulty = difficulty;
     this.ngOnInit();
   }
 
